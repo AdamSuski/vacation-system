@@ -12,7 +12,7 @@
     <artifactId>vacation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>vacation</name>
-    <description>System to manage employee's vaction</description>
+    <description>System to manage employee's vacation</description>
 
     <properties>
         <java.version>11</java.version>
