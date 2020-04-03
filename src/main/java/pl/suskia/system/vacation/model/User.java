@@ -11,6 +11,8 @@ public class User {
     private String name;
     @NotNull
     private String surname;
+    private String eMail;
+    private String position;
     private UserPermission userPermission;
 
     public User(@NotNull UUID id, @NotNull String name, @NotNull String surname, UserPermission userPermission) {
