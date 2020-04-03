@@ -1,5 +1,6 @@
 package pl.suskia.system.vacation.model;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
@@ -7,9 +8,9 @@ public class User {
 
     @NotNull
     private UUID id;
-    @NotNull
+    @NotBlank
     private String name;
-    @NotNull
+    @NotBlank
     private String surname;
     private String eMail;
     private String position;
@@ -19,6 +20,37 @@ public class User {
         this.id = id;
         this.name = name;
         this.surname = surname;
+        this.userPermission = userPermission;
+    }
+
+    public User(@NotNull UUID id, User user) {
+        this.id = id;
+        this.name = user.getName();
+        this.surname = user.getSurname();
+        this.userPermission = user.getUserPermission();
+    }
+
+    public String geteMail() {
+        return eMail;
+    }
+
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public UserPermission getUserPermission() {
+        return userPermission;
+    }
+
+    public void setUserPermission(UserPermission userPermission) {
         this.userPermission = userPermission;
     }
 

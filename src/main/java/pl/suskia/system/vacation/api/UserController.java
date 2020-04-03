@@ -5,8 +5,12 @@ import org.springframework.web.bind.annotation.*;
 import pl.suskia.system.vacation.model.User;
 import pl.suskia.system.vacation.service.UserService;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.UUID;
 
+@RequestMapping("api/v1/users")
 @RestController
 public class UserController {
     private final UserService userService;
@@ -17,22 +21,27 @@ public class UserController {
     }
 
     @PostMapping
-    public void addUser(User user) {
+    public void addUser(@Valid @NotNull @RequestBody User user) {
         userService.addUser(user);
     }
 
-    @PutMapping
-    public void updateUser(UUID id) {
-        userService.updateUser(id);
+    @PutMapping(path = "{id}")
+    public void updateUser(@PathVariable("id") UUID id, @Valid @NotNull @RequestBody User userToUpdate) {
+        userService.updateUser(id, userToUpdate);
     }
 
     @DeleteMapping
-    public void deleteUser(UUID id) {
+    public void deleteUser(@PathVariable UUID id) {
         userService.deleteUserById(id);
     }
 
     @GetMapping
-    public void getAllUsers() {
-        userService.getAllUsers();
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
+    @GetMapping(path = "{id}")
+    public User getUserByID(@PathVariable("id") UUID id) {
+        return userService.getUserById(id).orElse(null);
     }
 }
