@@ -1,5 +1,7 @@
 package pl.suskia.system.vacation.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import pl.suskia.system.vacation.model.User;
 
@@ -9,6 +11,13 @@ import java.util.UUID;
 
 @Repository("postgres")
 public class UserPostgresDataAccessService implements UserDao {
+    private final JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public UserPostgresDataAccessService(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
     @Override
     public int addUser(User user) {
         return 0;

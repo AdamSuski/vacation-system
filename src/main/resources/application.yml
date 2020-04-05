@@ -1,6 +1,6 @@
 app:
-  datasorce:
-    jdbc-url: jdbc:postgresql://localhost:5432/vacationdb
+  datasource:
+    jdbc_url: jdbc:postgresql://localhost:5432/vacationdb
     username: postgres
-    password: password
+    password: vacation
     pool-size: 30
