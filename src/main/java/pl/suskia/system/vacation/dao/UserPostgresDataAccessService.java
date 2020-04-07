@@ -25,12 +25,28 @@ public class UserPostgresDataAccessService implements UserDao {
 
     @Override
     public Optional<User> getUserById(UUID id) {
-        return Optional.empty();
+        final String sql = "SELECT id, name FROM user_dev WHERE id = ?";
+
+        User user = jdbcTemplate.queryForObject(
+                sql,
+                new Object[]{id},
+                ((resultSet, i) -> {
+                    UUID userId = UUID.fromString(resultSet.getString("id"));
+                    String name = resultSet.getString("name");
+                    return new User(userId, name);
+                }));
+
+        return Optional.ofNullable(user);
     }
 
     @Override
     public List<User> getAllUsers() {
-        return null;
+        final String sql = "SELECT id, name FROM user_dev";
+        return jdbcTemplate.query(sql, ((resultSet, i) -> {
+            UUID id = UUID.fromString(resultSet.getString("id"));
+            String name = resultSet.getString("name");
+            return new User(id, name);
+        }));
     }
 
     @Override

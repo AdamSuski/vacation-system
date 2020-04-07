@@ -23,6 +23,13 @@ public class User {
         this.userPermission = userPermission;
     }
 
+    public User(@NotNull UUID id, String name){
+        this.id = id;
+        this.name = name;
+        this.surname = name;
+        this.userPermission = UserPermission.EMPLOYEE;
+    }
+
     public User(@NotNull UUID id, User user) {
         this.id = id;
         this.name = user.getName();

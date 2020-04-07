@@ -3,6 +3,7 @@ package pl.suskia.system.vacation.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.suskia.system.vacation.model.User;
+import pl.suskia.system.vacation.model.UserPermission;
 import pl.suskia.system.vacation.service.UserService;
 
 import javax.validation.Valid;
