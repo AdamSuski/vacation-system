@@ -20,6 +20,7 @@ public class UserPostgresDataAccessService implements UserDao {
 
     @Override
     public int addUser(User user) {
+        final String sql = "INSERT INTO () VALUES ()";
         return 0;
     }
 
