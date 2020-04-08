@@ -20,13 +20,13 @@ public class UserPostgresDataAccessService implements UserDao {
 
     @Override
     public int addUser(User user) {
-        final String sql = "INSERT INTO () VALUES ()";
+        final String sql = "INSERT INTO user_dev () VALUES ()";
         return 0;
     }
 
     @Override
     public Optional<User> getUserById(UUID id) {
-        final String sql = "SELECT id, name FROM user_dev WHERE id = ?";
+        final String sql = "SELECT id, name FROM user_dev WHERE id = ?;";
 
         User user = jdbcTemplate.queryForObject(
                 sql,
@@ -42,7 +42,7 @@ public class UserPostgresDataAccessService implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
-        final String sql = "SELECT id, name FROM user_dev";
+        final String sql = "SELECT id, name FROM user_dev;";
         return jdbcTemplate.query(sql, ((resultSet, i) -> {
             UUID id = UUID.fromString(resultSet.getString("id"));
             String name = resultSet.getString("name");

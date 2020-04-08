@@ -4,3 +4,7 @@ app:
     username: postgres
     password: vacation
     pool-size: 30
+spring:
+  h2:
+    console:
+      enabled: true

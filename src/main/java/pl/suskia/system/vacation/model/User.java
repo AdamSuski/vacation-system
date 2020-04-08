@@ -1,18 +1,27 @@
 package pl.suskia.system.vacation.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
+@Entity
+@Table(name="user")
 public class User {
-
+    @Id
     @NotNull
     private UUID id;
-    @NotBlank
-    private String name;
-    @NotBlank
+
+    @Column(name="first_name", nullable = false)//@NotBlank
+    private String firstName;
+    @Column(name="surname", nullable = false)//@NotBlank
     private String surname;
+    @Column(name="email")
     private String eMail;
+    @Column(name="position")
     private String position;
     private UserPermission userPermission;
 
